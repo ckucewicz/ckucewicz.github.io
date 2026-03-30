@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chris Kucewicz — Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F4;
+      --cream-dark: #F2EFE8;
+      --ink: #1A1A17;
+      --ink-mid: #4A4A44;
+      --ink-light: #8A8A82;
+      --teal: #0F6E56;
+      --teal-light: #E1F5EE;
+      --teal-mid: #1D9E75;
+      --border: rgba(26,26,23,0.10);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,244,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-text {}
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: var(--teal-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.6rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.18s;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+    .btn-primary:hover { background: #0F6E56dd; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink-mid);
+      border-color: var(--border);
+    }
+    .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+    .avatar-frame {
+      width: 320px;
+      height: 320px;
+      border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .avatar-initials {
+      font-family: var(--serif);
+      font-size: 5rem;
+      color: var(--teal);
+      opacity: 0.5;
+      user-select: none;
+    }
+    .avatar-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 2px solid var(--teal-mid);
+      opacity: 0.3;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .stat-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--ink-light); }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--cream); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
+    .skill-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .skill-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--ink);
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: var(--cream-dark);
+      color: var(--ink-mid);
+      border: 1px solid var(--border);
+    }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: #fff; }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1px 1fr;
+      gap: 0 1.5rem;
+      padding-bottom: 2.5rem;
+    }
+    .timeline-date {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      padding-top: 2px;
+      text-align: right;
+    }
+    .timeline-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .timeline-connector {
+      flex: 1;
+      width: 1px;
+      background: var(--border);
+      margin-top: 6px;
+    }
+    .timeline-item:last-child .timeline-connector { display: none; }
+    .timeline-content h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .timeline-org {
+      font-size: 0.85rem;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-content p {
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+    }
+    .timeline-content ul {
+      margin: 0.5rem 0 0 1rem;
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+    }
+    .timeline-content li { margin-bottom: 4px; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--cream); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
+    .project-thumb {
+      height: 180px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .project-thumb-emoji {
+      font-size: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    .project-thumb-2 { background: #EEF4FB; }
+    .project-thumb-3 { background: #F5F0FA; }
+    .project-thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(15,110,86,0.04) 18px,
+        rgba(15,110,86,0.04) 19px
+      );
+    }
+    .project-body { padding: 1.25rem; }
+    .project-body h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .project-body p {
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .project-links { display: flex; gap: 8px; }
+    .project-link {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--teal);
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1px solid var(--teal-light);
+      border-radius: 100px;
+      transition: background 0.15s;
+    }
+    .project-link:hover { background: var(--teal-light); }
+
+    /* ── EDUCATION ── */
+    #education { background: #fff; }
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .edu-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .edu-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .edu-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 6px;
+    }
+    .edu-logo-placeholder {
+      font-size: 1.4rem;
+    }
+    .edu-info {}
+    .edu-degree {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .edu-school {
+      font-size: 0.88rem;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .edu-year { font-size: 0.82rem; color: var(--ink-light); }
+
+    /* ── BLOG ── */
+    #blog { background: var(--cream); }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .blog-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: box-shadow 0.2s, transform 0.2s;
+      overflow: hidden;
+    }
+    .blog-thumb {
+      height: 160px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .blog-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-thumb-emoji {
+      font-size: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .blog-body { padding: 1.25rem; }
+    .blog-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
+    .blog-date { font-size: 0.75rem; color: var(--ink-light); margin-bottom: 0.5rem; letter-spacing: 0.04em; }
+    .blog-card h3 {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .blog-card p { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.6; }
+    .blog-arrow { color: var(--teal); font-size: 1.1rem; display: block; margin-top: 1rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); }
+    #contact .section-label { color: var(--teal-mid); }
+    #contact h2 { color: #fff; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-text p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.92rem;
+      transition: color 0.15s;
+    }
+    .contact-link:hover { color: var(--teal-mid); }
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .contact-form input:focus,
+    .contact-form textarea:focus { border-color: var(--teal-mid); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .btn-send {
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+      align-self: flex-start;
+    }
+    .btn-send:hover { background: #0d5f49; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--teal-mid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; padding: 4rem 1.25rem 3rem; gap: 2rem; text-align: center; }
+      .hero-visual { order: -1; }
+      .hero-desc { max-width: 100%; }
+      .btn-row { justify-content: center; }
+      .avatar-frame { width: 200px; height: 200px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .timeline-date { text-align: left; }
+      .timeline-line { display: none; }
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+
+    /* ── ENTRANCE ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Chris Kucewicz</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-text">
+      <span class="hero-tag fade-up">Chicago, IL</span>
+      <h1 class="fade-up delay-1"><em>Chris</em><br>Kucewicz</h1>
+      <p class="hero-desc fade-up delay-2" style="font-size:1.1rem; color:var(--ink-mid); font-weight:400; letter-spacing:0.01em;">Data Analyst &nbsp;·&nbsp; Geospatial Analyst &nbsp;·&nbsp; Data Visualization Specialist</p>
+      <div class="btn-row fade-up delay-3">
+        <a class="btn btn-primary" href="YOUR_RESUME_LINK_HERE" target="_blank">📄 Resume</a>
+        <a class="btn btn-outline" href="YOUR_GITHUB_LINK_HERE" target="_blank">GitHub</a>
+        <a class="btn btn-outline" href="YOUR_LINKEDIN_LINK_HERE" target="_blank">LinkedIn</a>
+        <a class="btn btn-outline" href="YOUR_BLOG_LINK_HERE" target="_blank">Blog</a>
+      </div>
+    </div>
+    <div class="hero-visual fade-up delay-2">
+      <div class="avatar-frame">
+        <!-- Replace this with an <img> tag pointing to your photo -->
+        <span class="avatar-initials">CK</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About me</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Analyst, mapper,<br>storyteller with data</h2>
+          <p>I'm a data analyst and former math teacher with a passion for turning complex information into clear, actionable insight. My work spans data visualization, spatial analysis, and predictive modeling.</p>
+          <p>I'm drawn to public-sector and civic data — including U.S. Census and ACS datasets — and am actively seeking roles as a Data Analyst, GIS Analyst, or Data Visualization Specialist where data drives meaningful societal impact.</p>
+          <p>Outside of work, I write about data methods and tools on my blog.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Years in data analysis</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">10</div>
+            <div class="stat-label">Projects completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Years project management</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">12</div>
+            <div class="stat-label">Blog posts published</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">Skills</p>
+      <h2>What I work with</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3>Data Analysis</h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">StatsModels</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🗺️</div>
+          <h3>Spatial Analysis</h3>
+          <div class="skill-tags">
+            <span class="tag">ArcGIS</span>
+            <span class="tag">GeoPandas</span>
+            <span class="tag">Folium</span>
+            <span class="tag">Leaflet</span>
+            <span class="tag">PostGIS</span>
+            <span class="tag">Spatial Clustering</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">📈</div>
+          <h3>Data Visualization</h3>
+          <div class="skill-tags">
+            <span class="tag">Tableau</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Plotly</span>
+            <span class="tag">Matplotlib</span>
+            <span class="tag">Seaborn</span>
+            <span class="tag">ggplot2</span>
+            <span class="tag">InDesign</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h3>Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">Classification</span>
+            <span class="tag">Regression</span>
+            <span class="tag">Random Forests</span>
+            <span class="tag">Decision Trees</span>
+            <span class="tag">SMOTE</span>
+            <span class="tag">SVD</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🔬</div>
+          <h3>Research & Statistics</h3>
+          <div class="skill-tags">
+            <span class="tag">Hypothesis Testing</span>
+            <span class="tag">Causal Inference</span>
+            <span class="tag">Regression Analysis</span>
+            <span class="tag">Cohort Analysis</span>
+            <span class="tag">Survey Design</span>
+            <span class="tag">QA / QC</span>
+            <span class="tag">U.S. Census</span>
+            <span class="tag">ACS Data</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🛠️</div>
+          <h3>Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="tag">Git / GitHub</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Salesforce</span>
+            <span class="tag">Power Query</span>
+            <span class="tag">Visio</span>
+            <span class="tag">APIs</span>
+            <span class="tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Experience</p>
+      <h2>Where I've worked</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Oct 2024 – Present</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>Program Analyst & Office Manager</h3>
+            <p class="timeline-org">Michael's Energy — Energy & Sustainability Consulting, Chicago, IL</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Oct 2023 – Oct 2024</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>Project Manager & Data / Policy Analyst</h3>
+            <p class="timeline-org">Cook County Office of Research, Operations & Innovation, Chicago, IL</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Apr 2024 – Sep 2024</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>Community Engagement Ambassador</h3>
+            <p class="timeline-org">City of Philadelphia, Philadelphia, PA</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2023 – Sep 2024</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>Lead STEM Instructor & Data Reporting Specialist</h3>
+            <p class="timeline-org">TEACH, LLC., Philadelphia, PA</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Mar 2023 – Aug 2023</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>AI / Machine Learning Instructor</h3>
+            <p class="timeline-org">Kode with Klossy, New York, NY</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Aug 2021 – Jun 2023</div>
+          <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
+          <div class="timeline-content">
+            <h3>High School Math Teacher & Academic Advisor</h3>
+            <p class="timeline-org">School District of Philadelphia, Philadelphia, PA</p>
+          </div>
+        </div>
+
+      </div>
+      <div style="margin-top: 2rem;">
+        <a class="btn btn-outline" href="YOUR_RESUME_LINK_HERE" target="_blank" style="display:inline-flex;">📄 View full resume</a>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">Projects</p>
+      <h2>Selected work</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-thumb">
+            <!-- Replace with: <img src="images/transit-preview.png" alt="Transit Ridership Analysis" /> -->
+            <span class="project-thumb-emoji">🚇</span>
+          </div>
+          <div class="project-body">
+            <h3>Transit Ridership Analysis</h3>
+            <p>Analyzed 1.25M+ CTA 'L' records using SQL & Python to clean data, build interactive Folium/Plotly maps, and forecast post-COVID ridership recovery — projecting a plateau at ~85–90% of pre-COVID highs.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Folium</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_TRANSIT_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#FFF0F0;">
+            <!-- Replace with: <img src="images/crime-preview.png" alt="Chicago Crime Rate Regression" /> -->
+            <span class="project-thumb-emoji">📉</span>
+          </div>
+          <div class="project-body">
+            <h3>Chicago Crime Rate Regression</h3>
+            <p>In progress — R analysis exploring how public spending (police, housing, libraries) relates to crime rates in Chicago over time, using lagged regression models and inflation-adjusted budget data.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">R</span><span class="tag">Regression</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_CRIME_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#FFF8E8;">
+            <!-- Replace with: <img src="images/bikelane-housing-preview.png" alt="Chicago Bike Lane & Housing Analysis" /> -->
+            <span class="project-thumb-emoji">🚲</span>
+          </div>
+          <div class="project-body">
+            <h3>Chicago Bike Lane & Housing Analysis</h3>
+            <p>Spatial and statistical analysis exploring the relationship between bike infrastructure and housing trends across Chicago neighborhoods.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">GIS</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_BIKELANE_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-3">
+            <!-- Replace with: <img src="images/district-preview.png" alt="Cook County District Report" /> -->
+            <span class="project-thumb-emoji">📋</span>
+          </div>
+          <div class="project-body">
+            <h3>Cook County District Overview Report</h3>
+            <p>Integrated Census API, ZIP-level data, and district shapefiles to build a unified dataset for Cook County's public-facing impact report, covering 17 districts with population-weighted district-level metrics.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_DISTRICT_REPORT_LINK" target="_blank">Report</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-3">
+            <!-- Replace with: <img src="images/trees-preview.png" alt="NYC Trees & Wealth" /> -->
+            <span class="project-thumb-emoji">🌳</span>
+          </div>
+          <div class="project-body">
+            <h3>NYC Trees & Wealth Dashboard</h3>
+            <p>Tableau dashboard exploring the relationship between wealth and tree coverage across NYC's five boroughs, visualizing 680K+ trees with interactive maps, bar charts, and bubble charts.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Tableau</span><span class="tag">Geospatial</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_TREES_TABLEAU_LINK" target="_blank">Tableau</a>
+                <a class="project-link" href="YOUR_TREES_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-2">
+            <!-- Replace with: <img src="images/safezones-preview.png" alt="School Safe Zones" /> -->
+            <span class="project-thumb-emoji">🏫</span>
+          </div>
+          <div class="project-body">
+            <h3>School Safe Zones — Pasadena, CA</h3>
+            <p>ArcGIS geospatial analysis filtering 26K+ traffic incidents to identify the 5 most dangerous school zones for pedestrians and cyclists, accounting for 30%+ of all incidents. Recommended targeted infrastructure upgrades.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">ArcGIS</span><span class="tag">Spatial Analysis</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_SAFEZONES_LINK" target="_blank">Portfolio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#FFF0F0;">
+            <!-- Replace with: <img src="images/crash-preview.png" alt="Traffic Crash Prediction" /> -->
+            <span class="project-thumb-emoji">🚗</span>
+          </div>
+          <div class="project-body">
+            <h3>Traffic Crash Prediction</h3>
+            <p>ML classification project analyzing 1M+ Chicago crash records to predict fatal crash contributors. Built a decision tree model with SMOTE for class imbalance; proposed three public policy recommendations.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">SMOTE</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_CRASH_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb project-thumb-2">
+            <!-- Replace with: <img src="images/gunviolence-preview.png" alt="Gun Violence & Education" /> -->
+            <span class="project-thumb-emoji">📊</span>
+          </div>
+          <div class="project-body">
+            <h3>Gun Violence & Education Dashboard</h3>
+            <p>R regression analysis exploring the statistically significant inverse relationship between juvenile gun deaths and high school graduation rates across Chicago ZIP codes (2018–2021), visualized in Tableau.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">R</span><span class="tag">Tableau</span><span class="tag">Regression</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_GUNVIOLENCE_TABLEAU_LINK" target="_blank">Tableau</a>
+                <a class="project-link" href="YOUR_GUNVIOLENCE_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#EEF4FB;">
+            <!-- Replace with: <img src="images/tanzania-preview.png" alt="Tanzania Water Wells" /> -->
+            <span class="project-thumb-emoji">🌊</span>
+          </div>
+          <div class="project-body">
+            <h3>Tanzania Water Well Classification</h3>
+            <p>ML classification model predicting water well functionality from ~60K entries. Used Random Forest with GridSearchCV and Recursive Feature Elimination, achieving 78% recall with only 9.7% false negatives.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Scikit-learn</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_TANZANIA_GITHUB_LINK" target="_blank">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-thumb" style="background:#F5F0FA;">
+            <!-- Replace with: <img src="images/act-preview.png" alt="ACT Program Evaluation" /> -->
+            <span class="project-thumb-emoji">📝</span>
+          </div>
+          <div class="project-body">
+            <h3>ACT Program Evaluation Report</h3>
+            <p>Comprehensive data analysis of 8 years of high school ACT performance to evaluate program effectiveness, producing a detailed report with findings and recommendations for instructional leadership.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Excel</span><span class="tag">Canva</span></div>
+              <div class="project-links">
+                <a class="project-link" href="YOUR_ACT_REPORT_LINK" target="_blank">Report</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <p class="section-label">Education</p>
+      <h2>Academic background</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <div class="edu-logo">
+            <!-- Replace with: <img src="images/flatiron-logo.png" alt="Flatiron School" /> -->
+            <span class="edu-logo-placeholder">🎓</span>
+          </div>
+          <div class="edu-info">
+            <div class="edu-degree">Data Science Bootcamp Certificate</div>
+            <div class="edu-school">Flatiron School, New York, NY</div>
+            <div class="edu-year">December 2024</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-logo">
+            <!-- Replace with: <img src="images/penn-logo.png" alt="University of Pennsylvania" /> -->
+            <span class="edu-logo-placeholder">🎓</span>
+          </div>
+          <div class="edu-info">
+            <div class="edu-degree">M.S. Mathematics Education</div>
+            <div class="edu-school">University of Pennsylvania, Philadelphia, PA</div>
+            <div class="edu-year">May 2020 · GPA 4.0</div>
+          </div>
+        </div>
+        <div class="edu-card">
+          <div class="edu-logo">
+            <!-- Replace with: <img src="images/pitt-logo.png" alt="University of Pittsburgh" /> -->
+            <span class="edu-logo-placeholder">🎓</span>
+          </div>
+          <div class="edu-info">
+            <div class="edu-degree">B.S. Mathematics</div>
+            <div class="edu-school">University of Pittsburgh, Pittsburgh, PA</div>
+            <div class="edu-year">December 2018 · Magna Cum Laude</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="section-inner">
+      <p class="section-label">Writing</p>
+      <h2>Recent posts</h2>
+      <div class="blog-grid">
+        <a class="blog-card" href="YOUR_BLOG_POST_1_LINK" target="_blank">
+          <div class="blog-thumb" style="background:#E1F5EE;">
+            <!-- Replace with: <img src="images/blog-causal-inference.png" alt="Causal Inference" /> -->
+            <span class="blog-thumb-emoji">🔗</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-date">Recent</div>
+            <h3>Introduction to Causal Inference</h3>
+            <p>Foundations of causal thinking for data analysis — understanding cause vs. correlation in practice.</p>
+            <span class="blog-arrow">→</span>
+          </div>
+        </a>
+        <a class="blog-card" href="YOUR_BLOG_POST_2_LINK" target="_blank">
+          <div class="blog-thumb" style="background:#EEF4FB;">
+            <!-- Replace with: <img src="images/blog-90-days.png" alt="First 90 Days" /> -->
+            <span class="blog-thumb-emoji">📅</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-date">Recent</div>
+            <h3>Starting a Data Career: What I Learned in My First 90 Days</h3>
+            <p>Key takeaways from my first quarter of an applied data fellowship.</p>
+            <span class="blog-arrow">→</span>
+          </div>
+        </a>
+        <a class="blog-card" href="YOUR_BLOG_POST_3_LINK" target="_blank">
+          <div class="blog-thumb" style="background:#F5F0FA;">
+            <!-- Replace with: <img src="images/blog-storytelling.png" alt="Data Storytelling" /> -->
+            <span class="blog-thumb-emoji">📖</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-date">Recent</div>
+            <h3>How to Use Data Storytelling to Create Effective Visuals</h3>
+            <p>Key data visualization strategies for clear and impactful communication.</p>
+            <span class="blog-arrow">→</span>
+          </div>
+        </a>
+        <a class="blog-card" href="YOUR_BLOG_POST_4_LINK" target="_blank">
+          <div class="blog-thumb" style="background:#FFF8E8;">
+            <!-- Replace with: <img src="images/blog-hypothesis.png" alt="Hypothesis Testing" /> -->
+            <span class="blog-thumb-emoji">🧪</span>
+          </div>
+          <div class="blog-body">
+            <div class="blog-date">Recent</div>
+            <h3>Intro to Hypothesis Testing in Python</h3>
+            <p>A beginner's guide to conducting and interpreting hypothesis tests with Python.</p>
+            <span class="blog-arrow">→</span>
+          </div>
+        </a>
+      </div>
+      <div style="margin-top: 2rem;">
+        <a class="btn btn-outline" href="YOUR_BLOG_LINK_HERE" target="_blank" style="display:inline-flex;">✍️ View all 12 posts →</a>
+      </div>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in touch</p>
+      <div class="contact-grid">
+        <div class="contact-text">
+          <h2 style="color:#fff;">Let's work together</h2>
+          <p>Open to full-time roles, contract projects, and research collaborations. Don't hesitate to reach out.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="/cdn-cgi/l/email-protection#1a797c716f797f6d7379605a7d777b737634797577">
+              <span class="contact-link-icon">✉</span>
+              <span class="__cf_email__" data-cfemail="c3a0a5a8b6a0a6b4aaa0b983a4aea2aaafeda0acae">[email&#160;protected]</span>
+            </a>
+            <a class="contact-link" href="YOUR_LINKEDIN_LINK_HERE" target="_blank">
+              <span class="contact-link-icon">in</span>
+              LinkedIn
+            </a>
+            <a class="contact-link" href="YOUR_GITHUB_LINK_HERE" target="_blank">
+              <span class="contact-link-icon">gh</span>
+              GitHub
+            </a>
+            <a class="contact-link" href="YOUR_TABLEAU_LINK_HERE" target="_blank">
+              <span class="contact-link-icon">TB</span>
+              Tableau Public
+            </a>
+            <a class="contact-link" href="YOUR_BLOG_LINK_HERE" target="_blank">
+              <span class="contact-link-icon">✍</span>
+              Blog
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="Your name" required />
+          <input type="email" placeholder="Your email" required />
+          <input type="text" placeholder="Subject" />
+          <textarea placeholder="Your message…" required></textarea>
+          <button class="btn-send" type="submit">Send message →</button>
+          <p id="form-msg" style="font-size:0.82rem;color:var(--teal-mid);display:none;">Thanks! I'll be in touch soon.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Chris Kucewicz. Built with HTML & CSS, hosted on GitHub Pages.</p>
+    <div class="footer-links">
+      <a href="YOUR_RESUME_LINK_HERE" target="_blank">Resume</a>
+      <a href="YOUR_GITHUB_LINK_HERE" target="_blank">GitHub</a>
+      <a href="YOUR_LINKEDIN_LINK_HERE" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5d
