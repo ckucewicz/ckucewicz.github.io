@@ -617,9 +617,54 @@
       .timeline-date { text-align: left; }
       .timeline-line { display: none; }
       nav { padding: 0 1.25rem; }
-      .nav-links { gap: 1.25rem; }
       section { padding: 3.5rem 1.25rem; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 56px;
+        left: 0; right: 0;
+        background: rgba(250,248,244,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.5rem 0;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links li:last-child a { border-bottom: none; }
+      .hamburger { display: flex; }
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ── ENTRANCE ANIMATIONS ── */
     @keyframes fadeUp {
@@ -638,7 +683,10 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#hero">Chris Kucewicz</a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -951,7 +999,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/ckucewicz/mortality_education_analysis" target="_blank">
+        <a class="project-card" href="https://public.tableau.com/views/DataVizChallenge_Gun_Violence__Edu/scientificdashboard3?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank">
           <div class="project-thumb project-thumb-2">
             <img src="images/Gun Rate Education Dashboard.png" alt="Gun Violence and Education Dashboard" />
           </div>
@@ -977,7 +1025,7 @@
           </div>
         </a>
 
-        <div class="project-card">
+        <a class="project-card" href="https://canva.link/jd4xto4hra2pckw" target="_blank">
           <div class="project-thumb" style="background:#F5F0FA;">
             <img src="images/ACT Prep Data Report.png" alt="ACT Program Evaluation" />
           </div>
@@ -988,7 +1036,7 @@
               <div class="skill-tags"><span class="tag">Excel</span><span class="tag">Canva</span></div>
             </div>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
@@ -1135,4 +1183,27 @@
   <footer>
     <p>© 2025 Chris Kucewicz. Built with HTML & CSS, hosted on GitHub Pages.</p>
     <div class="footer-links">
-      <a href="https://drive.google.com/file/d/1qFNU3eug5kc8YxQOMXb87Z4jnD2XmfSu/view?usp=sh
+      <a href="https://drive.google.com/file/d/1qFNU3eug5kc8YxQOMXb87Z4jnD2XmfSu/view?usp=sh      <a href="https://drive.google.com/file/d/1qFNU3eug5kc8YxQOMXb87Z4jnD2XmfSu/view?usp=sharing" target="_blank">Resume</a>
+      <a href="https://github.com/ckucewicz" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/chriskucewicz" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
