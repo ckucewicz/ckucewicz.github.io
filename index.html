@@ -154,7 +154,7 @@
     .avatar-frame {
       width: 320px;
       height: 320px;
-      border-radius: 40% 60% 55% 45% / 45% 50% 50% 55%;
+      border-radius: 50%;
       background: var(--teal-light);
       display: flex;
       align-items: center;
@@ -347,8 +347,13 @@
       border-radius: 14px;
       overflow: hidden;
       transition: box-shadow 0.2s, transform 0.2s;
+      display: block;
+      text-decoration: none;
+      color: inherit;
     }
-    .project-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
+    .project-card[href]:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); cursor: pointer; }
+    .project-card:not([href]) { cursor: default; }
+    .project-card:not([href]):hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,110,86,0.08); }
     .project-thumb {
       height: 180px;
       background: var(--teal-light);
@@ -605,7 +610,7 @@
       .hero-visual { order: -1; }
       .hero-desc { max-width: 100%; }
       .btn-row { justify-content: center; }
-      .avatar-frame { width: 200px; height: 200px; }
+      .avatar-frame { width: 200px; height: 200px; border-radius: 50%; }
       .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
       .timeline-date { text-align: left; }
@@ -649,7 +654,7 @@
       <h1 class="fade-up delay-1"><em>Chris</em><br>Kucewicz</h1>
       <p class="hero-desc fade-up delay-2" style="font-size:1.1rem; color:var(--ink-mid); font-weight:400; letter-spacing:0.01em;">Data Analyst &nbsp;·&nbsp; Geospatial Analyst &nbsp;·&nbsp; Data Visualization Specialist</p>
       <div class="btn-row fade-up delay-3">
-        <a class="btn btn-primary" href="YOUR_RESUME_LINK_HERE" target="_blank">📄 Resume</a>
+        <a class="btn btn-primary" href="https://drive.google.com/file/d/1ewm_Yf942bjqLTOUMnD0lvdNb6ilzM_o/view?usp=sharing" target="_blank">📄 Resume</a>
         <a class="btn btn-outline" href="https://github.com/ckucewicz" target="_blank">GitHub</a>
         <a class="btn btn-outline" href="https://www.linkedin.com/in/chriskucewicz" target="_blank">LinkedIn</a>
         <a class="btn btn-outline" href="https://medium.com/@ckucewicz21" target="_blank">Blog</a>
@@ -670,7 +675,7 @@
         <div class="about-text">
           <h2>Analyst, mapper,<br>storyteller with data</h2>
           <p>I'm a data analyst and former math teacher with a passion for turning complex information into clear, actionable insight. My work spans data visualization, spatial analysis, and predictive modeling.</p>
-          <p>I'm drawn to public-sector and civic data — including U.S. Census and ACS datasets — and am actively seeking roles as a Data Analyst, GIS Analyst, or Data Visualization Specialist where data drives meaningful societal impact.</p>
+          <p>I'm drawn to public-sector and civic data, including U.S. Census and ACS datasets, and am actively seeking roles as a Data Analyst, GIS Analyst, or Data Visualization Specialist where data drives meaningful societal impact.</p>
           <p>Outside of work, I write about data methods and tools on my blog.</p>
         </div>
         <div class="about-stats">
@@ -679,7 +684,7 @@
             <div class="stat-label">Years in data analysis</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">10</div>
+            <div class="stat-num">9</div>
             <div class="stat-label">Projects completed</div>
           </div>
           <div class="stat-card">
@@ -795,7 +800,7 @@
           <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
           <div class="timeline-content">
             <h3>Program Analyst & Office Manager</h3>
-            <p class="timeline-org">Michael's Energy — Energy & Sustainability Consulting, Chicago, IL</p>
+            <p class="timeline-org">Michael's Energy, Energy &amp; Sustainability Consulting, Chicago, IL</p>
           </div>
         </div>
 
@@ -812,7 +817,7 @@
           <div class="timeline-date">Apr 2024 – Sep 2024</div>
           <div class="timeline-line"><div class="timeline-dot"></div><div class="timeline-connector"></div></div>
           <div class="timeline-content">
-            <h3>Community Engagement Ambassador</h3>
+            <h3>Community Engagement Ambassador <span style="font-weight:300; font-size:0.9em; color:var(--ink-light);">(part-time)</span></h3>
             <p class="timeline-org">City of Philadelphia, Philadelphia, PA</p>
           </div>
         </div>
@@ -846,7 +851,7 @@
 
       </div>
       <div style="margin-top: 2rem;">
-        <a class="btn btn-outline" href="YOUR_RESUME_LINK_HERE" target="_blank" style="display:inline-flex;">📄 View full resume</a>
+        <a class="btn btn-outline" href="https://drive.google.com/file/d/1ewm_Yf942bjqLTOUMnD0lvdNb6ilzM_o/view?usp=sharing" target="_blank" style="display:inline-flex;">📄 View full resume</a>
       </div>
     </div>
   </section>
@@ -856,39 +861,33 @@
       <h2>Selected work</h2>
       <div class="projects-grid">
 
-        <div class="project-card">
+        <a class="project-card" href="https://ckucewicz.github.io/cta_ridership_analysis/" target="_blank">
           <div class="project-thumb">
             <img src="images/ridership analysis.png" alt="Transit Ridership Analysis" />
           </div>
           <div class="project-body">
             <h3>Transit Ridership Analysis</h3>
-            <p>Analyzed 1.25M+ CTA 'L' records using SQL & Python to clean data, build interactive Folium/Plotly maps, and forecast post-COVID ridership recovery — projecting a plateau at ~85–90% of pre-COVID highs.</p>
+            <p>Analyzed 1.25M+ CTA 'L' records using SQL &amp; Python to clean data, build interactive Folium/Plotly maps, and forecast post-COVID ridership recovery, projecting a plateau at ~85–90% of pre-COVID highs.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Folium</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://ckucewicz.github.io/cta_ridership_analysis/" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="project-card">
+        <a class="project-card" href="https://ckucewicz.github.io/crime_rate_regression/" target="_blank">
           <div class="project-thumb" style="background:#FFF0F0;">
             <span class="project-thumb-emoji">📉</span>
           </div>
           <div class="project-body">
             <h3>Chicago Crime Rate Regression</h3>
-            <p>In progress — R analysis exploring how public spending (police, housing, libraries) relates to crime rates in Chicago over time, using lagged regression models and inflation-adjusted budget data.</p>
+            <p>In progress. R analysis exploring how public spending (police, housing, libraries) relates to crime rates in Chicago over time, using lagged regression models and inflation-adjusted budget data.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">R</span><span class="tag">Regression</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://ckucewicz.github.io/crime_rate_regression/" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="project-card">
+        <a class="project-card" href="https://ckucewicz.github.io/bike_lane_housing_analysis/" target="_blank">
           <div class="project-thumb" style="background:#FFF8E8;">
             <img src="images/bike lane housing analysis.png" alt="Chicago Bike Lane & Housing Analysis" />
           </div>
@@ -897,12 +896,9 @@
             <p>Spatial and statistical analysis exploring the relationship between bike infrastructure and housing trends across Chicago neighborhoods.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">GIS</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://ckucewicz.github.io/bike_lane_housing_analysis/" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
         <div class="project-card">
           <div class="project-thumb project-thumb-3">
@@ -914,13 +910,11 @@
             <p>Integrated Census API, ZIP-level data, and district shapefiles to build a unified dataset for Cook County's public-facing impact report, covering 17 districts with population-weighted district-level metrics.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span></div>
-              <div class="project-links">
-              </div>
             </div>
           </div>
         </div>
 
-        <div class="project-card">
+        <a class="project-card" href="https://public.tableau.com/app/profile/chris.kucewicz/viz/WealthTreesinNYC/Dashboard1" target="_blank">
           <div class="project-thumb project-thumb-3">
             <!-- Replace with: <img src="images/trees-preview.png" alt="NYC Trees & Wealth" /> -->
             <span class="project-thumb-emoji">🌳</span>
@@ -930,30 +924,13 @@
             <p>Tableau dashboard exploring the relationship between wealth and tree coverage across NYC's five boroughs, visualizing 680K+ trees with interactive maps, bar charts, and bubble charts.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Tableau</span><span class="tag">Geospatial</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://public.tableau.com/app/profile/chris.kucewicz/viz/WealthTreesinNYC/Dashboard1" target="_blank">Tableau</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="project-card">
-          <div class="project-thumb project-thumb-2">
-            <!-- Replace with: <img src="images/safezones-preview.png" alt="School Safe Zones" /> -->
-            <span class="project-thumb-emoji">🏫</span>
-          </div>
-          <div class="project-body">
-            <h3>School Safe Zones — Pasadena, CA</h3>
-            <p>ArcGIS geospatial analysis filtering 26K+ traffic incidents to identify the 5 most dangerous school zones for pedestrians and cyclists, accounting for 30%+ of all incidents. Recommended targeted infrastructure upgrades.</p>
-            <div class="project-footer">
-              <div class="skill-tags"><span class="tag">ArcGIS</span><span class="tag">Spatial Analysis</span></div>
-              <div class="project-links">
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="project-card">
+
+        <a class="project-card" href="https://ckucewicz.github.io/traffic_crash_prediction/" target="_blank">
           <div class="project-thumb" style="background:#FFF0F0;">
             <img src="images/traffic safety analysis.png" alt="Traffic Crash Prediction" />
           </div>
@@ -962,14 +939,11 @@
             <p>ML classification project analyzing 1M+ Chicago crash records to predict fatal crash contributors. Built a decision tree model with SMOTE for class imbalance; proposed three public policy recommendations.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">SMOTE</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://ckucewicz.github.io/traffic_crash_prediction/" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="project-card">
+        <a class="project-card" href="https://github.com/ckucewicz/mortality_education_analysis" target="_blank">
           <div class="project-thumb project-thumb-2">
             <!-- Replace with: <img src="images/gunviolence-preview.png" alt="Gun Violence & Education" /> -->
             <span class="project-thumb-emoji">📊</span>
@@ -979,14 +953,11 @@
             <p>R regression analysis exploring the statistically significant inverse relationship between juvenile gun deaths and high school graduation rates across Chicago ZIP codes (2018–2021), visualized in Tableau.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">R</span><span class="tag">Tableau</span><span class="tag">Regression</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/ckucewicz/mortality_education_analysis" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <div class="project-card">
+        <a class="project-card" href="https://github.com/ckucewicz/water_well_classification" target="_blank">
           <div class="project-thumb" style="background:#EEF4FB;">
             <img src="images/water well classification.png" alt="Tanzania Water Wells" />
           </div>
@@ -995,12 +966,9 @@
             <p>ML classification model predicting water well functionality from ~60K entries. Used Random Forest with GridSearchCV and Recursive Feature Elimination, achieving 78% recall with only 9.7% false negatives.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Python</span><span class="tag">GeoPandas</span><span class="tag">Scikit-learn</span></div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/ckucewicz/water_well_classification" target="_blank">GitHub</a>
-              </div>
             </div>
           </div>
-        </div>
+        </a>
 
         <div class="project-card">
           <div class="project-thumb" style="background:#F5F0FA;">
@@ -1012,8 +980,6 @@
             <p>Comprehensive data analysis of 8 years of high school ACT performance to evaluate program effectiveness, producing a detailed report with findings and recommendations for instructional leadership.</p>
             <div class="project-footer">
               <div class="skill-tags"><span class="tag">Excel</span><span class="tag">Canva</span></div>
-              <div class="project-links">
-              </div>
             </div>
           </div>
         </div>
@@ -1075,7 +1041,7 @@
           <div class="blog-body">
             <div class="blog-date">Recent</div>
             <h3>Introduction to Causal Inference</h3>
-            <p>Foundations of causal thinking for data analysis — understanding cause vs. correlation in practice.</p>
+            <p>Foundations of causal thinking for data analysis, understanding cause vs. correlation in practice.</p>
             <span class="blog-arrow">→</span>
           </div>
         </a>
@@ -1164,6 +1130,6 @@
   <footer>
     <p>© 2025 Chris Kucewicz. Built with HTML & CSS, hosted on GitHub Pages.</p>
     <div class="footer-links">
-      <a href="YOUR_RESUME_LINK_HERE" target="_blank">Resume</a>
+      <a href="https://drive.google.com/file/d/1ewm_Yf942bjqLTOUMnD0lvdNb6ilzM_o/view?usp=sharing" target="_blank">Resume</a>
       <a href="https://github.com/ckucewicz" target="_blank">GitHub</a>
       <a href="https://www.link
