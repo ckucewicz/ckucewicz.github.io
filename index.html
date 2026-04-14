@@ -599,6 +599,19 @@
     }
     .btn-send:hover { background: #0d5f49; }
 
+    /* ── PROJECT FILTER BUTTONS ── */
+    .filter-btn {
+      font-family: var(--sans);
+      font-size: 0.78rem; font-weight: 500;
+      padding: 5px 14px; border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: #fff; color: var(--ink-mid);
+      cursor: pointer; transition: all 0.18s;
+    }
+    .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .filter-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    .project-card.hidden { display: none; }
+
     /* ── FOOTER ── */
     footer {
       background: var(--ink);
@@ -926,22 +939,22 @@
     <div class="section-inner">
       <p class="section-label">Projects</p>
       <h2>Selected work</h2>
+
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2rem;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Python">Python</button>
+        <button class="filter-btn" data-filter="R">R</button>
+        <button class="filter-btn" data-filter="SQL">SQL</button>
+        <button class="filter-btn" data-filter="Tableau">Tableau</button>
+        <button class="filter-btn" data-filter="GIS">GIS</button>
+        <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
+        <button class="filter-btn" data-filter="Regression">Regression</button>
+        <button class="filter-btn" data-filter="Data Visualization">Data Visualization</button>
+      </div>
+
       <div class="projects-grid">
 
-        <a class="project-card" href="https://ckucewicz.github.io/Chart_challenge_2026/" target="_blank">
-          <div class="project-thumb" style="background:#E1F5EE;">
-            <img src="images/30DayChallengeThumbnail.png" alt="30 Day Chart Challenge 2026" />
-          </div>
-          <div class="project-body">
-            <h3>30 Day Chart Challenge 2026</h3>
-            <p>A collection of data visualizations created for each day of the month in April 2026.</p>
-            <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Data Visualization</span><span class="tag">R</span><span class="tag">ggplot</span><span class="tag">D3</span></div>
-            </div>
-          </div>
-        </a>
-
-        <a class="project-card" href="https://ckucewicz.github.io/cta_ridership_analysis/" target="_blank">
+        <a class="project-card" href="https://ckucewicz.github.io/cta_ridership_analysis/" target="_blank" data-tags="SQL Python Folium Data Visualization GIS">
           <div class="project-thumb">
             <img src="images/ridership analysis.png" alt="Transit Ridership Analysis" />
           </div>
@@ -954,20 +967,33 @@
           </div>
         </a>
 
-        <a class="project-card" href="https://ckucewicz.github.io/crime_rate_regression/" target="_blank">
-          <div class="project-thumb" style="background:#FFF0F0;">
-            <img src="images/crime regression.png" alt="Chicago Crime Rate Regression" />
+        <a class="project-card" href="https://ckucewicz.github.io/district_overview/" target="_blank" data-tags="Python APIs InDesign Data Visualization">
+          <div class="project-thumb project-thumb-3">
+            <img src="images/District Report.png" alt="Cook County District Report" />
           </div>
           <div class="project-body">
-            <h3>Chicago Crime Rate Regression <span style="font-size:0.75rem; font-weight:400; color:var(--ink-light);">(in progress)</span></h3>
-            <p>In progress. R analysis exploring how public spending (police, housing, libraries) relates to crime rates in Chicago over time, using lagged regression models and inflation-adjusted budget data.</p>
+            <h3>Cook County District Overview Report</h3>
+            <p>Integrated Census API, ZIP-level data, and district shapefiles to build a unified dataset for Cook County's public-facing impact report, covering 17 districts with population-weighted district-level metrics.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">R</span><span class="tag">Regression</span></div>
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span></div>
             </div>
           </div>
         </a>
 
-        <a class="project-card" href="https://ckucewicz.github.io/bike_lane_housing_analysis/" target="_blank">
+        <a class="project-card" href="https://ckucewicz.github.io/Chart_challenge_2026/" target="_blank" data-tags="Data Visualization R ggplot D3">
+          <div class="project-thumb" style="background:#E1F5EE;">
+            <img src="images/30DayChallengeThumbnail.png" alt="30 Day Chart Challenge 2026" />
+          </div>
+          <div class="project-body">
+            <h3>30 Day Chart Challenge 2026</h3>
+            <p>A collection of data visualizations created for each day of the month in April 2026.</p>
+            <div class="project-footer">
+              <div class="skill-tags"><span class="tag">Data Visualization</span><span class="tag">R</span><span class="tag">ggplot</span><span class="tag">D3</span></div>
+            </div>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://ckucewicz.github.io/bike_lane_housing_analysis/" target="_blank" data-tags="Python R GIS Data Visualization">
           <div class="project-thumb" style="background:#FFF8E8;">
             <img src="images/biking and housing analysis.png" alt="Chicago Bike Lane & Housing Analysis" />
           </div>
@@ -980,20 +1006,20 @@
           </div>
         </a>
 
-        <div class="project-card">
-          <div class="project-thumb project-thumb-3">
-            <img src="images/District Report.png" alt="Cook County District Report" />
+        <a class="project-card" href="https://ckucewicz.github.io/crime_rate_regression/" target="_blank" data-tags="R Regression Data Visualization">
+          <div class="project-thumb" style="background:#FFF0F0;">
+            <img src="images/crime regression.png" alt="Chicago Crime Rate Regression" />
           </div>
           <div class="project-body">
-            <h3>Cook County District Overview Report</h3>
-            <p>Integrated Census API, ZIP-level data, and district shapefiles to build a unified dataset for Cook County's public-facing impact report, covering 17 districts with population-weighted district-level metrics.</p>
+            <h3>Chicago Crime Rate Regression <span style="font-size:0.75rem; font-weight:400; color:var(--ink-light);">(in progress)</span></h3>
+            <p>In progress. R analysis exploring how public spending (police, housing, libraries) relates to crime rates in Chicago over time, using lagged regression models and inflation-adjusted budget data.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span></div>
+              <div class="skill-tags"><span class="tag">R</span><span class="tag">Regression</span></div>
             </div>
           </div>
-        </div>
+        </a>
 
-        <a class="project-card" href="https://public.tableau.com/app/profile/chris.kucewicz/viz/WealthTreesinNYC/Dashboard1" target="_blank">
+        <a class="project-card" href="https://public.tableau.com/app/profile/chris.kucewicz/viz/WealthTreesinNYC/Dashboard1" target="_blank" data-tags="Tableau GIS Data Visualization">
           <div class="project-thumb project-thumb-3">
             <img src="images/NYC trees dashboard.png" alt="NYC Trees and Wealth" />
           </div>
@@ -1006,9 +1032,7 @@
           </div>
         </a>
 
-
-
-        <a class="project-card" href="https://ckucewicz.github.io/traffic_crash_prediction/" target="_blank">
+        <a class="project-card" href="https://ckucewicz.github.io/traffic_crash_prediction/" target="_blank" data-tags="Python Machine Learning Data Visualization">
           <div class="project-thumb" style="background:#FFF0F0;">
             <img src="images/traffic safety analysis.png" alt="Traffic Crash Prediction" />
           </div>
@@ -1021,7 +1045,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="https://public.tableau.com/views/DataVizChallenge_Gun_Violence__Edu/scientificdashboard3?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank">
+        <a class="project-card" href="https://public.tableau.com/views/DataVizChallenge_Gun_Violence__Edu/scientificdashboard3?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" data-tags="R Tableau Regression Data Visualization GIS">
           <div class="project-thumb project-thumb-2">
             <img src="images/Gun Rate Education Dashboard.png" alt="Gun Violence and Education Dashboard" />
           </div>
@@ -1034,7 +1058,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/ckucewicz/water_well_classification" target="_blank">
+        <a class="project-card" href="https://github.com/ckucewicz/water_well_classification" target="_blank" data-tags="Python Machine Learning GIS">
           <div class="project-thumb" style="background:#EEF4FB;">
             <img src="images/water well classification.png" alt="Tanzania Water Wells" />
           </div>
@@ -1047,7 +1071,7 @@
           </div>
         </a>
 
-        <a class="project-card" href="https://canva.link/jd4xto4hra2pckw" target="_blank">
+        <a class="project-card" href="https://canva.link/jd4xto4hra2pckw" target="_blank" data-tags="Data Visualization">
           <div class="project-thumb" style="background:#F5F0FA;">
             <img src="images/ACT Prep Data Report.png" alt="ACT Program Evaluation" />
           </div>
@@ -1224,6 +1248,25 @@
       link.addEventListener('click', () => {
         hamburger.classList.remove('open');
         navLinks.classList.remove('open');
+      });
+    });
+
+    // Project filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        document.querySelectorAll('.project-card').forEach(card => {
+          if (filter === 'all') {
+            card.classList.remove('hidden');
+          } else {
+            const tags = card.dataset.tags || '';
+            tags.includes(filter) ? card.classList.remove('hidden') : card.classList.add('hidden');
+          }
+        });
       });
     });
   </script>
