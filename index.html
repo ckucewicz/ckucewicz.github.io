@@ -956,18 +956,30 @@
       <p class="section-label">Projects</p>
       <h2>Selected work</h2>
 
-      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:2rem;">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="Python">Python</button>
-        <button class="filter-btn" data-filter="R">R</button>
-        <button class="filter-btn" data-filter="SQL">SQL</button>
-        <button class="filter-btn" data-filter="Tableau">Tableau</button>
-        <button class="filter-btn" data-filter="GIS">GIS</button>
-        <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
-        <button class="filter-btn" data-filter="Regression">Regression</button>
-        <button class="filter-btn" data-filter="Data Visualization">Data Visualization</button>
-        <button class="filter-btn" data-filter="API">API</button>
-        <button class="filter-btn" data-filter="Automation">Automation</button>
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:0.5rem;">Domain</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1rem;">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="Public Safety">Public Safety</button>
+          <button class="filter-btn" data-filter="Public Health">Public Health</button>
+          <button class="filter-btn" data-filter="Transportation">Transportation</button>
+          <button class="filter-btn" data-filter="Urban Planning">Urban Planning</button>
+          <button class="filter-btn" data-filter="Education">Education</button>
+          <button class="filter-btn" data-filter="Sports Analytics">Sports Analytics</button>
+        </div>
+        <div style="font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:0.5rem;">Tools</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <button class="filter-btn" data-filter="Python">Python</button>
+          <button class="filter-btn" data-filter="R">R</button>
+          <button class="filter-btn" data-filter="SQL">SQL</button>
+          <button class="filter-btn" data-filter="Tableau">Tableau</button>
+          <button class="filter-btn" data-filter="GIS">GIS</button>
+          <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
+          <button class="filter-btn" data-filter="Regression">Regression</button>
+          <button class="filter-btn" data-filter="Data Visualization">Data Visualization</button>
+          <button class="filter-btn" data-filter="API">API</button>
+          <button class="filter-btn" data-filter="Automation">Automation</button>
+        </div>
       </div>
 
       <div class="projects-grid">
@@ -993,7 +1005,7 @@
             <h3>Illinois Community Revitalization Analysis</h3>
             <p>Developed a composite need score to identify which of Illinois' 102 counties would most benefit from targeted community revitalization investment, using 28 ACS variables across 5 survey years and choropleth maps.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">R</span><span class="tag">tidycensus</span><span class="tag">ggplot2</span><span class="tag">GIS</span><span class="tag">Housing</span><span class="tag">Community Development</span></div>
+              <div class="skill-tags"><span class="tag">R</span><span class="tag">tidycensus</span><span class="tag">ggplot2</span><span class="tag">GIS</span><span class="tag">Urban Planning</span></div>
             </div>
           </div>
         </a>
@@ -1019,7 +1031,7 @@
             <h3>Traffic Crash Prediction</h3>
             <p>ML classification project analyzing 1M+ Chicago crash records to predict fatal crash contributors. Built a decision tree model with SMOTE for class imbalance; proposed three public policy recommendations.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">SMOTE</span><span class="tag">Public Safety</span></div>
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">SMOTE</span><span class="tag">Public Safety</span><span class="tag">Transportation</span></div>
             </div>
           </div>
         </a>
@@ -1032,7 +1044,7 @@
             <h3>Chicago Bike Lane & Housing Analysis <span style="font-size:0.75rem; font-weight:400; color:var(--ink-light);">(in progress)</span></h3>
             <p>Spatial and statistical analysis exploring the relationship between bike infrastructure and housing trends across Chicago neighborhoods.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">GIS</span><span class="tag">Transportation</span><span class="tag">Housing</span></div>
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">GIS</span><span class="tag">Transportation</span><span class="tag">Urban Planning</span></div>
             </div>
           </div>
         </a>
@@ -1045,7 +1057,7 @@
             <h3>Cook County District Overview Report</h3>
             <p>Integrated Census API, ZIP-level data, and district shapefiles to build a unified dataset for Cook County's public-facing impact report, covering 17 districts with population-weighted district-level metrics.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span><span class="tag">Government</span><span class="tag">Policy</span></div>
+              <div class="skill-tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">InDesign</span><span class="tag">Urban Planning</span></div>
             </div>
           </div>
         </a>
@@ -1058,7 +1070,7 @@
             <h3>NYC Trees & Wealth Dashboard</h3>
             <p>Tableau dashboard exploring the relationship between wealth and tree coverage across NYC's five boroughs, visualizing 680K+ trees with interactive maps, bar charts, and bubble charts.</p>
             <div class="project-footer">
-              <div class="skill-tags"><span class="tag">Tableau</span><span class="tag">Geospatial</span><span class="tag">Urban Planning</span><span class="tag">Environment</span></div>
+              <div class="skill-tags"><span class="tag">Tableau</span><span class="tag">Geospatial</span><span class="tag">Urban Planning</span></div>
             </div>
           </div>
         </a>
